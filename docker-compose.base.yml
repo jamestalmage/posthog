@@ -90,6 +90,10 @@ services:
         #       `posthog` and the `charts-clickhouse` repos
         #
         image: ${CLICKHOUSE_SERVER_IMAGE:-clickhouse/clickhouse-server:24.8.7.41}
+        cap_add:
+            -   'SYS_NICE'
+            -   'NET_ADMIN'
+            -   'IPC_LOCK'
         restart: on-failure
 
     zookeeper:

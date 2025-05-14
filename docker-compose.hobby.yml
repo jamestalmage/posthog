@@ -75,6 +75,13 @@ services:
         volumes:
             - kafka-data:/bitnami/kafka
 
+    kafka_ui:
+        extends:
+            file: docker-compose.base.yml
+            service: kafka_ui
+        depends_on:
+            - kafka
+
     worker:
         extends:
             file: docker-compose.base.yml
